@@ -1,5 +1,5 @@
 ---
-{"dg-home":true,"dg-publish":true,"permalink":"/exponential-decay-vs-power-law-decay/","tags":["gardenEntry"],"dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/exponential-decay-vs-power-law-decay/","tags":["gardenEntry"]}
 ---
 
 When $x$ is time, 
