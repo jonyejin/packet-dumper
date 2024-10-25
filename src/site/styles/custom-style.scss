@@ -21,15 +21,16 @@ body {
 
 
   .filename {
-    margin-left: 0px;
+    margin-left: 2px;
   }
 
+  // table of contents
   .toc-title {
-    font-size: 0.8rem !important;
+    font-size: 0.6rem !important;
   }
 
   .backlink-title {
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
 }
 
@@ -48,20 +49,7 @@ body {
 
 
 .filetree-sidebar {
-  margin: 0;
-  z-index: 10;
-  padding: 10px;
-  top: 0px;
-  left: 0;
-  position: fixed;
-  height: 100%;
-  background-color: var(--background-secondary);
-  color: var(--text-muted);
-  overflow-y: auto;
-  width: 250px;
-
   h1 {
-    font-size: 24px !important;
-
+    font-size: 12px !important;
   }
 }
