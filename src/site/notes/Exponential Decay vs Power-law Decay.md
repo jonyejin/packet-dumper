@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/exponential-decay-vs-power-law-decay/","tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/exponential-decay-vs-power-law-decay/"}
 ---
 
 #  Exponential Decay vs Power-law Decay
