@@ -2,13 +2,34 @@
 {"dg-publish":true,"permalink":"/dns-sec-domain-name-system-security-extensions/"}
 ---
 
+과정
+1. RRSet은 그냥 원본 데이터임
+2. RRSIG는 RRSet을 해싱하고, private key로 서명한 것임. (즉, encrypted hash value)
+3. DNS 서버에 요청하면 RRSet과 RRSIG를 같이 줌. 이걸 해당 dns 서버의 public key로 까보면 우리가 원하는 데이터를 받을 수 있다.
+
+** 해당 dns 서버의 public key가 유효한지 증명하는 추가 과정
+	(notation: 이 해당 dns 서버의 public key가 zone-signing key임.)
+
+더 상위 DNS서버에게 요청해서 상위 서버의 KSK, 하위 서버의 ZSH hash해서 encrypt한걸 받음.
+얘의 KSK로 ZSH hash를 decrypt해봤을 때 내가 받은 값이랑 일치하면 문제 없는거임
+
+** 더 상위 DNS서버의 public key가 유효한지 증명하는 추가 과정
+
+root DNS서버에게 요청해서 상위 서버의 ZSH hash해서 encrypt한걸 받음.
+얘의 KSK(파티때 전세계에 announce됨)으로 ZSH hash를 decrypt해봤을 때 내가 받은 값이랑 일치하면 문제 없는거임
+
+
+
 ### DNSSEC (Domain Name System Security Extensions)
 DNSSEC is a protocol extension designed to enhance the security of the DNS by protecting against data spoofing and tampering. It uses cryptographic methods to ensure data integrity, origin authentication, and secure denial of existence.
 
 ![](https://miro.medium.com/v2/resize:fit:1400/1*GLQ4YeaOBFvV6u-sfhm17Q.png)
 
+- **KSK(Key Signing Key):** 도메인 소유자가 사용하는 “상위 신뢰 앵커” 역할의 키로, ZSK를 서명하는 데 사용된다.
+- **ZSK(Zone Signing Key):** 실제 DNS 존(zone) 데이터(레코드들)를 서명하는 데 사용되는 키로, 변경이 더 빈번하며 비교적 짧은 주기로 교체 가능하다.
 
 ![](https://miro.medium.com/v2/resize:fit:930/1*oCW3Ed9Ylb1MkFtgW9o-uw.png)
+
 
 
 DNSSEC(Domain Name System Security Extensions)은 DNS(Domain Name System)의 보안을 강화하기 위한 확장 프로토콜입니다. DNS는 도메인 이름을 IP 주소로 변환하는 중요한 인터넷 서비스인데, 기본적으로 보안 메커니즘이 없어 데이터 위조나 변조에 취약합니다. DNSSEC은 이런 문제를 해결하고자 설계되었습니다.
